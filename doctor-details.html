@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Care Dental</title>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Doctor Selection with Time Slots</title>
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background-image: url(images/appoinmentbg.png);
+                color: #333;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-size: cover;
+            }
+            
+            .appointment-summary {
+                max-width: 600px;
+                width: 100%;
+                padding: 30px;
+                background-color: #ffffffd1;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                animation: fadeIn 1.2s ease-in-out;
+            }
+            
+            .appointment-summary h2 {
+                text-align: center;
+                font-size: 28px;
+                color: #012027;
+                margin-bottom: 20px;
+                animation: slideDown 1s ease-in-out;
+            }
+            
+            .appointment-summary .info {
+                margin-bottom: 20px;
+            }
+            
+            .appointment-summary p {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            
+            .appointment-summary label {
+                display: block;
+                margin: 15px 0 5px;
+                font-size: 16px;
+            }
+            
+            .appointment-summary select,
+            .appointment-summary input {
+                width: 100%;
+                padding: 12px;
+                margin-bottom: 20px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                background-color: #fafafa;
+                box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+            
+            .appointment-summary select:focus,
+            .appointment-summary input:focus {
+                border-color: #00839d;
+                box-shadow: 0 0 10px rgba(98, 0, 234, 0.2);
+            }
+            
+            .appointment-summary button {
+                width: 100%;
+                padding: 15px;
+                background-color: #06758e;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+            
+            .appointment-summary button:hover {
+                background-color: #4580bf;
+                transform: translateY(-3px);
+            }
+            
+            .appointment-summary button:active {
+                background-color: #096383e0;
+                transform: translateY(0);
+            }
+            
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes slideDown {
+                0% {
+                    opacity: 0;
+                    transform: translateY(-50px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .appointment-summary {
+                    padding: 20px;
+                }
+                .appointment-summary h2 {
+                    font-size: 24px;
+                }
+                .appointment-summary button {
+                    font-size: 16px;
+                }
+            }
+        </style>
+    </head>
+</head>
+
+<body>
+
+    <div class="appointment-summary">
+        <h2>Book an Appointment</h2>
+        <div class="info">
+            <p><strong>Name:</strong> <span id="customerName"></span></p>
+            <p><strong>Phone Number:</strong> <span id="customerPhone"></span></p>
+            <p><strong>Email:</strong> <span id="customerEmail"></span></p>
+        </div>
+
+        <form action="save_appointment.php" method="POST">
+            <label for="doctor">Select Doctor</label>
+            <select id="doctor" name="doctor" onchange="updateAvailableTimes()" required>
+                <option value="">Select a Doctor</option>
+                <option value="Dr. Sisira Jayakody">Dr. Sisira Jayakody</option>
+                <option value="Dr. Dinushi Yapa">Dr. Dinushi Yapa</option>
+                <option value="Dr. L.C.L. Peiris">Dr. L.C.L. Peiris</option>
+                <option value="Dr. Rajitha L. Munasinghe">Dr. Rajitha L. Munasinghe</option>
+                <option value="Dr. Sadara Liyanage">Dr. Sadara Liyanage</option>
+                
+            </select>
+
+            <label for="date">Select Date</label>
+            <input type="date" id="date" name="date" onchange="updateAvailableTimes()" required>
+
+            <label for="time">Available Time Slots</label>
+            <select id="time" name="time" required>
+                <option value="">Select a time</option>
+            </select>
+
+
+            <input type="hidden" id="customerNameHidden" name="name">
+            <input type="hidden" id="customerPhoneHidden" name="phone">
+            <input type="hidden" id="customerEmailHidden" name="email">
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('customerName').textContent = localStorage.getItem('appointmentName') || 'N/A';
+        document.getElementById('customerPhone').textContent = localStorage.getItem('appointmentPhone') || 'N/A';
+        document.getElementById('customerEmail').textContent = localStorage.getItem('appointmentEmail') || 'N/A';
+
+        document.getElementById('customerNameHidden').value = localStorage.getItem('appointmentName');
+        document.getElementById('customerPhoneHidden').value = localStorage.getItem('appointmentPhone');
+        document.getElementById('customerEmailHidden').value = localStorage.getItem('appointmentEmail');
+
+        const doctorAvailability = {
+            "Dr. Sisira Jayakody": {
+                "2024-09-24": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-09-25": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-09-26": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-09-27": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-09-28": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-09-29": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-09-30": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-09-01": ["9:00 AM", "1:00 PM", "4:00 PM"]
+            },
+            "Dr. Dinushi Yapa": {
+                "2024-09-29": ["9:00 AM", "12:00 PM", "3:00 PM"],
+                "2024-09-30": ["10:00 AM", "1:00 PM", "3:30 PM"],
+                "2024-10-01": ["9:00 AM", "12:00 PM", "3:00 PM"],
+                "2024-10-02": ["10:00 AM", "1:00 PM", "3:30 PM"],
+                "2024-10-03": ["9:00 AM", "12:00 PM", "3:00 PM"],
+                "2024-10-04": ["10:00 AM", "1:00 PM", "3:30 PM"],
+                "2024-10-05": ["9:00 AM", "12:00 PM", "3:00 PM"],
+                "2024-10-06": ["10:00 AM", "1:00 PM", "3:30 PM"]
+            },
+            "Dr. L.C.L. Peiris": {
+                "2024-10-01": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-02": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-03": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-04": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-05": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-06": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-07": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-08": ["9:00 AM", "1:00 PM", "4:00 PM"]
+            },
+            "Dr. Rajitha L. Munasinghe": {
+                "2024-10-01": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-02": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-03": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-04": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-05": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-06": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-07": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-08": ["9:00 AM", "1:00 PM", "4:00 PM"]
+            },
+            "Dr. Sadara Liyanage": {
+                "2024-10-01": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-02": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-03": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-04": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-05": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-06": ["9:00 AM", "1:00 PM", "4:00 PM"],
+                "2024-10-07": ["10:00 AM", "11:00 AM", "2:00 PM"],
+                "2024-10-08": ["9:00 AM", "1:00 PM", "4:00 PM"]
+            },
+        };
+
+        function updateAvailableTimes() {
+            const doctor = document.getElementById('doctor').value;
+            const date = document.getElementById('date').value;
+            const timeSelect = document.getElementById('time');
+
+
+            timeSelect.innerHTML = "<option value=''>Select a time</option>";
+
+
+            if (doctor && date) {
+
+                const availableTimes = doctorAvailability[doctor] ? doctorAvailability[doctor][date] : [];
+
+
+                if (availableTimes.length > 0) {
+                    availableTimes.forEach(time => {
+                        const option = document.createElement('option');
+                        option.value = time;
+                        option.textContent = time;
+                        timeSelect.appendChild(option);
+                    });
+                } else {
+
+                    const option = document.createElement('option');
+                    option.textContent = 'No times available for selected date';
+                    timeSelect.appendChild(option);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
