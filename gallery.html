@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <title>AllCare Dental Gallery</title>
+    <title>Patient Gallery - All Care Dental</title>
+    <meta name="description" content="Browse real before and after results from All Care Dental patients, including implants, veneers, bridges and orthodontic treatment.">
 
 </head>
 
@@ -27,10 +29,13 @@
             </div>
         </div>
         <nav class="navbar">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Dentist Logo">
             </a>
-            <ul>
+            <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="primary-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="service_page.html">services</a></li>
@@ -53,64 +58,53 @@
         <div class="gallery-text">Check out some amazing transformations of our patients.</div>
 
         <div class="gallery-row">
-            <!-- Gallery Item 1 -->
             <div class="gallery-item">
-                <img src="images/DG/1.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/1.jpg" alt="Smile makeover before and after result">
+                <span class="gallery-tag">Smile Makeover</span>
             </div>
 
             <div class="gallery-item">
-                <img src="images/DG/3.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/3.jpg" alt="Smile makeover before and after result">
+                <span class="gallery-tag">Smile Makeover</span>
             </div>
 
             <div class="gallery-item">
-                <img src="images/DG/Composite Veeners_3S.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/Composite Veeners_3S.jpg" alt="Composite veneers case result">
+                <span class="gallery-tag">Composite Veneers</span>
             </div>
             <div class="gallery-item">
-                <img src="images/DG/Composite Veeners_3S.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/Crown Bridge Veeners_1S.jpg" alt="Crown and bridge case result">
+                <span class="gallery-tag">Crown &amp; Bridge</span>
             </div>
             <div class="gallery-item">
-                <img src="images/DG/Crown Bridge Veeners_1S.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/Implant_1S.jpg" alt="Dental implant case result">
+                <span class="gallery-tag">Dental Implants</span>
             </div>
             <div class="gallery-item">
-                <img src="images/DG/Implant_1S.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/Implant_2S.jpg" alt="Dental implant case result">
+                <span class="gallery-tag">Dental Implants</span>
             </div>
             <div class="gallery-item">
-                <img src="images/DG/Implant_2S.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/Implant_3S.jpg" alt="Dental implant case result">
+                <span class="gallery-tag">Dental Implants</span>
             </div>
             <div class="gallery-item">
-                <img src="images/DG/Implant_3S.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/Orthodontics_1S.jpg" alt="Orthodontic treatment case result">
+                <span class="gallery-tag">Orthodontics</span>
             </div>
             <div class="gallery-item">
-                <img src="images/DG/Orthodontics_1S.jpg" alt="Before and After 1">
-                <button>Orthodontics</button>
+                <img src="images/DG/Orthodontics_2S.jpg" alt="Orthodontic treatment case result">
+                <span class="gallery-tag">Orthodontics</span>
             </div>
-            <div class="gallery-item"></div>
-            <img src="images/DG/Orthodontics_1S.jpg" alt="Before and After 1">
-            <button>Orthodontics</button>
+            <div class="gallery-item">
+                <img src="images/DG/Post Retain Crown_1S.jpg" alt="Post-retained crown case result">
+                <span class="gallery-tag">Post-Retained Crown</span>
+            </div>
+            <div class="gallery-item">
+                <img src="images/DG/Zircona Bridge_1S.jpg" alt="Zirconia bridge case result">
+                <span class="gallery-tag">Zirconia Bridge</span>
+            </div>
         </div>
-
-        <div class="gallery-item">
-            <img src="images/DG/Orthodontics_1S.jpg" alt="Before and After 1">
-            <button>Orthodontics</button>
-        </div>
-        <div class="gallery-item">
-            <img src="images/DG/Orthodontics_2S.jpg" alt="Before and After 1">
-            <button>Orthodontics</button>
-        </div>
-
-    </div>
-
-    </div>
-
-    </div>
     </div>
     <!-- footer -->
 
@@ -125,35 +119,34 @@
                     <a href="https://web.facebook.com/allcaredentalclinc">
                         <i class='bx bxl-facebook' style='color:#ffffff'></i>
                     </a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
-                    <a href="#" class="fab fa-instagram"></a>
                 </div>
             </div>
 
             <div class="box">
                 <h3>E-mail</h3>
-                <a href="#" class="link">allcaredental@gmail.com</a>
+                <a href="mailto:allcaredental@gmail.com" class="link">allcaredental@gmail.com</a>
 
             </div>
 
             <div class="box">
                 <h3>Call Us</h3>
-                <p>+94 77 275 0814</p>
-                <p>+94 72 196 7464</p>
+                <p><a href="tel:+94772750814">+94 77 275 0814</a></p>
+                <p><a href="tel:+94721967464">+94 72 196 7464</a></p>
             </div>
 
             <div class="box">
                 <h3>Opening Hours</h3>
-                <p>Monday – Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
+                <p>Monday - Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
                 </p>
             </div>
 
         </div>
 
         <div class="credit">created by <span>All Care Dental </span> | all rights reserved!</div>
+        <div class="dev-credit">Developed by <a href="https://hashanjanithwickramasooriya.netlify.app/" target="_blank" rel="noopener noreferrer">Hashan Wickramasooriya</a></div>
 
     </section>
+    <script src="js/nav.js"></script>
 </body>
 
 </html>

@@ -56,6 +56,7 @@ CREATE TABLE `message` (
   `name` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact` varchar(20) NOT NULL,
+  `city` varchar(100) DEFAULT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -63,9 +64,9 @@ CREATE TABLE `message` (
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`id`, `name`, `email`, `contact`, `message`) VALUES
-(1, 'janith', 'janith@gmail.com', '0712345678', 'hello'),
-(5, 'hashan ', 'hashan@gmail.com', '0772345432', 'hii');
+INSERT INTO `message` (`id`, `name`, `email`, `contact`, `city`, `message`) VALUES
+(1, 'janith', 'janith@gmail.com', '0712345678', NULL, 'hello'),
+(5, 'hashan ', 'hashan@gmail.com', '0772345432', NULL, 'hii');
 
 --
 -- Indexes for dumped tables

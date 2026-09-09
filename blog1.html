@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Care Dental</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>How to Find the Best Dental Clinic in Colombo - All Care Dental</title>
+    <meta name="description" content="Tips for choosing the right dental clinic in Colombo, from checking credentials to comparing services and patient reviews.">
     <link rel="stylesheet" href="css/blogpage.css">
 </head>
 
@@ -24,10 +26,13 @@
             </div>
         </div>
         <nav class="navbar">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Dentist Logo">
             </a>
-            <ul>
+            <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="primary-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="service_page.html">services</a></li>
@@ -50,7 +55,7 @@
             <header class="blog-header">
 
                 <img src="images/blog01.jpeg" alt="Cavity Image" class="header-img">
-                <h1>How can I find the Best Dentise</h1>
+                <h1>How can I find the Best Dental Clinic in Colombo?</h1>
                 <p class="author">By Dr. Sisira Jayakody in Chief Doctor, All Care Dental </p>
                 <p class="date">September 13th, 2024</p>
             </header>
@@ -132,34 +137,22 @@
             <div class="similar-posts">
                 <h3>Similar Posts</h3>
 
-                <!-- Post 1 -->
-                <a href="blog1.html" class="post-link">
-                    <div class="post">
-                        <img src="images/blog01.jpeg" alt="Post Thumbnail">
-                        <div class="post-info">
-                            <p class="post-date">September 13th, 2024</p>
-                            <p class="post-title">How can I find the Best Dental Clinic in Colombo?</p>
-                        </div>
-                    </div>
-                </a>
 
-                <!-- Post 2 -->
                 <a href="blog2.html" class="post-link">
                     <div class="post">
                         <img src="images/blog02.jpeg" alt="Post Thumbnail">
                         <div class="post-info">
-                            <p class="post-date">August 29th, 2024</p>
+                            <p class="post-date">September 13th, 2024</p>
                             <p class="post-title">Home Remedies for Wisdom Tooth Pain</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- Post 3 -->
                 <a href="blog3.html" class="post-link">
                     <div class="post">
                         <img src="images/blog3.jpg" alt="Post Thumbnail">
                         <div class="post-info">
-                            <p class="post-date">August 16th, 2024</p>
+                            <p class="post-date">September 13th, 2024</p>
                             <p class="post-title">6 Benefits of Oil Pulling</p>
                         </div>
                     </div>
@@ -171,6 +164,16 @@
                         <div class="post-info">
                             <p class="post-date">September 13th, 2024</p>
                             <p class="post-title">Why Am I Seeing Blood In Spit Up?</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="blog5.html" class="post-link">
+                    <div class="post">
+                        <img src="images/blog5.jpeg" alt="Post Thumbnail">
+                        <div class="post-info">
+                            <p class="post-date">September 13th, 2024</p>
+                            <p class="post-title">How to Stop Cavities</p>
                         </div>
                     </div>
                 </a>
@@ -206,35 +209,34 @@
                     <a href="https://web.facebook.com/allcaredentalclinc">
                         <i class='bx bxl-facebook' style='color:#ffffff'></i>
                     </a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
-                    <a href="#" class="fab fa-instagram"></a>
                 </div>
             </div>
 
             <div class="box">
                 <h3>E-mail</h3>
-                <a href="#" class="link">allcaredental@gmail.com</a>
+                <a href="mailto:allcaredental@gmail.com" class="link">allcaredental@gmail.com</a>
 
             </div>
 
             <div class="box">
                 <h3>Call Us</h3>
-                <p>+94 77 275 0814</p>
-                <p>+94 72 196 7464</p>
+                <p><a href="tel:+94772750814">+94 77 275 0814</a></p>
+                <p><a href="tel:+94721967464">+94 72 196 7464</a></p>
             </div>
 
             <div class="box">
                 <h3>Opening Hours</h3>
-                <p>Monday – Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
+                <p>Monday - Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
                 </p>
             </div>
 
         </div>
 
         <div class="credit">created by <span>All Care Dental </span> | all rights reserved!</div>
+        <div class="dev-credit">Developed by <a href="https://hashanjanithwickramasooriya.netlify.app/" target="_blank" rel="noopener noreferrer">Hashan Wickramasooriya</a></div>
 
     </section>
+    <script src="js/nav.js"></script>
 </body>
 
 </html>

@@ -115,6 +115,9 @@ section {
     color: var(--black);
     margin-left: 1.7rem;
     display: none;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 #menu-btn:hover {
@@ -908,6 +911,22 @@ h1 span {
     color: var(--secondary);
 }
 
+.footer .dev-credit {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--primary);
+}
+
+.footer .dev-credit a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.footer .dev-credit a:hover {
+    text-decoration: underline;
+}
+
 
 /* footer ends */
 
@@ -971,5 +990,14 @@ h1 span {
     }
     .home .content h3 {
         font-size: 3rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
     }
 }

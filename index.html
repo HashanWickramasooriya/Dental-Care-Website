@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All_Care_Dental</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>All Care Dental - Family Dental Clinic in Maharagama</title>
+    <meta name="description" content="All Care Dental is a family dental clinic in Maharagama, Sri Lanka offering general, cosmetic and emergency dental care. Book your appointment online.">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -20,20 +22,20 @@
 <body>
 
     <header class="header">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Dentist Logo">
         </a>
-        <nav class="navbar">
+        <nav class="navbar" id="primary-nav">
             <a href="index.html">home</a>
             <a href="about_us.html">about</a>
             <a href="service_page.html">services</a>
             <a href="gallery.html">Gallery</a>
             <a href="blog.html">blog</a>
             <a href="contactus.html">Contact Us</a>
-            <a </nav>
+        </nav>
 
-                <a href="Customer Information Form.html" class="btn"> make appointment </a>
-                <div id="menu-btn" class="fas fa-bars"></div>
+        <a href="Customer Information Form.html" class="btn"> make appointment </a>
+        <button type="button" id="menu-btn" class="fas fa-bars" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav"></button>
 
     </header>
 
@@ -42,14 +44,9 @@
     <!-- home -->
 
     <section class="home" id="home">
-
-        <section class="home" id="home">
-            <video autoplay muted loop id="home-video">
-              <source src="video/dental.mp4" type="video/mp4">
-            </video>
-        </section>
-
-
+        <video autoplay muted loop id="home-video" aria-hidden="true">
+          <source src="video/dental.mp4" type="video/mp4">
+        </video>
     </section>
 
     <!-- home end -->
@@ -60,7 +57,7 @@
         <h1 class="heading">about us</h1>
         <div class="row">
             <div class="image">
-                <img src="images/appoinments1.png" alt="">
+                <img src="images/appoinments1.png" alt="Dentist attending to a patient at All Care Dental">
             </div>
             <div class="content">
                 <h3>our clinic is made for you to be smiling all the time</h3>
@@ -126,7 +123,7 @@
                             </div>
                             <div>
                                 <h3 class="card-title">Orthodontic Treatment</h3>
-                                <p class="card-text">Orthodontic Treatment Orthodontic treatment at Align Dental Care is exceptional....</p>
+                                <p class="card-text">Orthodontic Treatment Orthodontic treatment at All Care Dental is exceptional....</p>
                             </div>
                         </div>
                     </li>
@@ -229,13 +226,13 @@
 
             <div class="box">
                 <div class="image">
-                    <img src="images/blog-1.jpg" alt="">
+                    <img src="images/blog-1.jpg" alt="Home remedies for tooth pain article thumbnail">
                 </div>
                 <div class="content">
-                    <a href="#" class="link">Diease</a>
+                    <span class="link">Oral Health</span>
                     <div class="icons">
-                        <a href="#"> <i class="fas fa-calendar"></i> July 12th,2024 - All Care Dental </a>
-                        <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                        <span> <i class="fas fa-calendar"></i> July 12th,2024 - All Care Dental </span>
+                        <span> <i class="fas fa-user"></i> by admin</span>
                     </div>
                     <h3>8 Home Remedies for Tooth Pain</h3>
                     <p>Tooth pain can strike at any time, often when least expected. Whether it's a dull ache or a sharp, throbbing pain, it can disrupt daily activities and make....</p>
@@ -245,33 +242,33 @@
 
             <div class="box">
                 <div class="image">
-                    <img src="images/blog-2.jpg" alt="">
+                    <img src="images/blog-2.jpg" alt="Benefits of oil pulling article thumbnail">
                 </div>
                 <div class="content">
-                    <a href="#" class="link">Diease</a>
+                    <span class="link">Oral Health</span>
                     <div class="icons">
-                        <a href="#"> <i class="fas fa-calendar"></i> August 22nd,2024 - All Care Dental</a>
-                        <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                        <span> <i class="fas fa-calendar"></i> August 22nd,2024 - All Care Dental</span>
+                        <span> <i class="fas fa-user"></i> by admin</span>
                     </div>
                     <h3>6 Benefits of Oil Pulling</h3>
                     <p>An age-old Ayurvedic technique called oil pulling has grown in favor recently as a home treatment for better dental health. Spitting out the oil after swishing it about...</p>
-                    <a href="blog.html" class="btn">Read More</a>
+                    <a href="blog3.html" class="btn">Read More</a>
                 </div>
             </div>
 
             <div class="box">
                 <div class="image">
-                    <img src="images/blog-3.jpg" alt="">
+                    <img src="images/blog-3.jpg" alt="Blood in spit up causes article thumbnail">
                 </div>
                 <div class="content">
-                    <a href="#" class="link">Diease</a>
+                    <span class="link">Oral Health</span>
                     <div class="icons">
-                        <a href="#"> <i class="fas fa-calendar"></i> August 15th,2024 - All Care Dental </a>
-                        <a href="#"> <i class="fas fa-user"></i> by admin</a>
+                        <span> <i class="fas fa-calendar"></i> August 15th,2024 - All Care Dental </span>
+                        <span> <i class="fas fa-user"></i> by admin</span>
                     </div>
                     <h3>Why Am I Seeing Blood In Spit Up?</h3>
                     <p>Why does blood sometimes appear in saliva? This common concern can stem from various factors, ranging from minor oral health issues to more serious medical conditions. When blood...</p>
-                    <a href="blog.html" class="btn">Read More</a>
+                    <a href="blog4.html" class="btn">Read More</a>
                 </div>
             </div>
 
@@ -291,7 +288,7 @@
                 <input type="checkbox" id="question1">
                 <label for="question1" class="faq-question">
                     <span class="plus-icon">+</span>
-                    Why should I prefer Align Dental Care?
+                    Why should I choose All Care Dental?
                 </label>
                 <div class="faq-answer">
                     <ul>
@@ -309,7 +306,7 @@
                 <input type="checkbox" id="question2">
                 <label for="question2" class="faq-question">
                     <span class="plus-icon">+</span>
-                    Are dentists in Align dental care available during weekends?
+                    Are dentists at All Care Dental available during weekends?
                 </label>
                 <div class="faq-answer">
                     <p>Yes, our dentists are available during weekends to cater to your needs.</p>
@@ -477,33 +474,31 @@
                     <a href="https://web.facebook.com/allcaredentalclinc">
                         <i class='bx bxl-facebook' style='color:#ffffff'></i>
                     </a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
-                    <a href="#" class="fab fa-instagram"></a>
                 </div>
             </div>
 
             <div class="box">
                 <h3>E-mail</h3>
-                <a href="#" class="link">allcaredental@gmail.com</a>
+                <a href="mailto:allcaredental@gmail.com" class="link">allcaredental@gmail.com</a>
 
             </div>
 
             <div class="box">
                 <h3>Call Us</h3>
-                <p>+94 77 275 0814</p>
-                <p>+94 72 196 7464</p>
+                <p><a href="tel:+94772750814">+94 77 275 0814</a></p>
+                <p><a href="tel:+94721967464">+94 72 196 7464</a></p>
             </div>
 
             <div class="box">
                 <h3>Opening Hours</h3>
-                <p>Monday – Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
+                <p>Monday - Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
                 </p>
             </div>
 
         </div>
 
         <div class="credit">created by <span>All Care Dental </span> | all rights reserved!</div>
+        <div class="dev-credit">Developed by <a href="https://hashanjanithwickramasooriya.netlify.app/" target="_blank" rel="noopener noreferrer">Hashan Wickramasooriya</a></div>
 
     </section>
 

@@ -69,12 +69,22 @@
                 opacity: 1;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .confirmation-message {
+                animation: none;
+                transform: none;
+            }
+            .confirmation-message h1 {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="confirmation-message">
-        <h1>Appointment Booked Successfully!</h1>
-        <p>Thank you for booking an appointment with us. We look forward to seeing you.</p>
+        <h1>Appointment Request Received</h1>
+        <p>Thank you. Our front desk will call or email you shortly to confirm your appointment time. If you need to reach us sooner, call <a href="tel:+94772750814" style="background:none;color:#2d87f0;padding:0;">+94 77 275 0814</a>.</p>
         <a href="index.html">Return to Home Page</a>
     </div>
 </body>

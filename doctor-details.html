@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Care Dental</title>
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Doctor Selection with Time Slots</title>
-        <style>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Select a Doctor - All Care Dental</title>
+    <meta name="description" content="Choose your dentist, preferred date and appointment time at All Care Dental, Maharagama.">
+    <style>
             body {
                 font-family: 'Poppins', sans-serif;
                 background-image: url(images/appoinmentbg.png);
@@ -120,6 +117,23 @@
                 }
             }
             
+            .field-hint {
+                margin: -14px 0 16px;
+                font-size: 13px;
+                color: #666;
+            }
+
+            .field-hint.error {
+                color: #c0392b;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .appointment-summary,
+                .appointment-summary h2 {
+                    animation: none;
+                }
+            }
+
             @media (max-width: 768px) {
                 .appointment-summary {
                     padding: 20px;
@@ -132,7 +146,6 @@
                 }
             }
         </style>
-    </head>
 </head>
 
 <body>
@@ -145,126 +158,161 @@
             <p><strong>Email:</strong> <span id="customerEmail"></span></p>
         </div>
 
-        <form action="save_appointment.php" method="POST">
+        <form action="save_appointment.php" method="POST" id="bookingForm">
             <label for="doctor">Select Doctor</label>
-            <select id="doctor" name="doctor" onchange="updateAvailableTimes()" required>
+            <select id="doctor" name="doctor" required>
                 <option value="">Select a Doctor</option>
                 <option value="Dr. Sisira Jayakody">Dr. Sisira Jayakody</option>
                 <option value="Dr. Dinushi Yapa">Dr. Dinushi Yapa</option>
                 <option value="Dr. L.C.L. Peiris">Dr. L.C.L. Peiris</option>
                 <option value="Dr. Rajitha L. Munasinghe">Dr. Rajitha L. Munasinghe</option>
                 <option value="Dr. Sadara Liyanage">Dr. Sadara Liyanage</option>
-                
             </select>
 
             <label for="date">Select Date</label>
-            <input type="date" id="date" name="date" onchange="updateAvailableTimes()" required>
+            <input type="date" id="date" name="date" required>
+            <p id="dateHint" class="field-hint">We're closed on Sundays. Choose a date within the next 30 days.</p>
 
             <label for="time">Available Time Slots</label>
-            <select id="time" name="time" required>
-                <option value="">Select a time</option>
+            <select id="time" name="time" required disabled>
+                <option value="">Choose a doctor and date first</option>
             </select>
-
 
             <input type="hidden" id="customerNameHidden" name="name">
             <input type="hidden" id="customerPhoneHidden" name="phone">
             <input type="hidden" id="customerEmailHidden" name="email">
 
-            <button type="submit">Book Appointment</button>
+            <button type="submit" id="bookingSubmitBtn">Book Appointment</button>
         </form>
     </div>
 
     <script>
-        document.getElementById('customerName').textContent = localStorage.getItem('appointmentName') || 'N/A';
-        document.getElementById('customerPhone').textContent = localStorage.getItem('appointmentPhone') || 'N/A';
-        document.getElementById('customerEmail').textContent = localStorage.getItem('appointmentEmail') || 'N/A';
+        const customerName = localStorage.getItem('appointmentName');
+        const customerPhone = localStorage.getItem('appointmentPhone');
+        const customerEmail = localStorage.getItem('appointmentEmail');
 
-        document.getElementById('customerNameHidden').value = localStorage.getItem('appointmentName');
-        document.getElementById('customerPhoneHidden').value = localStorage.getItem('appointmentPhone');
-        document.getElementById('customerEmailHidden').value = localStorage.getItem('appointmentEmail');
+        if (!customerName || !customerPhone || !customerEmail) {
+            window.location.href = 'Customer Information Form.html';
+        }
 
-        const doctorAvailability = {
+        document.getElementById('customerName').textContent = customerName || 'N/A';
+        document.getElementById('customerPhone').textContent = customerPhone || 'N/A';
+        document.getElementById('customerEmail').textContent = customerEmail || 'N/A';
+
+        document.getElementById('customerNameHidden').value = customerName || '';
+        document.getElementById('customerPhoneHidden').value = customerPhone || '';
+        document.getElementById('customerEmailHidden').value = customerEmail || '';
+
+        // Weekly recurring schedule per doctor (0 = Sunday ... 6 = Saturday). The clinic is closed on Sundays.
+        const weeklySchedule = {
             "Dr. Sisira Jayakody": {
-                "2024-09-24": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-09-25": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-09-26": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-09-27": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-09-28": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-09-29": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-09-30": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-09-01": ["9:00 AM", "1:00 PM", "4:00 PM"]
+                1: ["9:00 AM", "11:00 AM", "2:00 PM"],
+                2: ["9:00 AM", "11:00 AM", "2:00 PM"],
+                3: ["9:00 AM", "11:00 AM", "2:00 PM"],
+                4: ["9:00 AM", "11:00 AM", "2:00 PM"],
+                5: ["9:00 AM", "11:00 AM", "2:00 PM"],
+                6: ["9:00 AM", "10:30 AM", "12:00 PM"],
             },
             "Dr. Dinushi Yapa": {
-                "2024-09-29": ["9:00 AM", "12:00 PM", "3:00 PM"],
-                "2024-09-30": ["10:00 AM", "1:00 PM", "3:30 PM"],
-                "2024-10-01": ["9:00 AM", "12:00 PM", "3:00 PM"],
-                "2024-10-02": ["10:00 AM", "1:00 PM", "3:30 PM"],
-                "2024-10-03": ["9:00 AM", "12:00 PM", "3:00 PM"],
-                "2024-10-04": ["10:00 AM", "1:00 PM", "3:30 PM"],
-                "2024-10-05": ["9:00 AM", "12:00 PM", "3:00 PM"],
-                "2024-10-06": ["10:00 AM", "1:00 PM", "3:30 PM"]
+                1: ["9:00 AM", "12:00 PM", "3:00 PM"],
+                2: ["10:00 AM", "1:00 PM", "3:30 PM"],
+                3: ["9:00 AM", "12:00 PM", "3:00 PM"],
+                4: ["10:00 AM", "1:00 PM", "3:30 PM"],
+                5: ["9:00 AM", "12:00 PM", "3:00 PM"],
+                6: ["9:00 AM", "10:30 AM", "12:00 PM"],
             },
             "Dr. L.C.L. Peiris": {
-                "2024-10-01": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-02": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-03": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-04": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-05": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-06": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-07": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-08": ["9:00 AM", "1:00 PM", "4:00 PM"]
+                1: ["10:00 AM", "1:00 PM", "4:00 PM"],
+                2: ["10:00 AM", "1:00 PM", "4:00 PM"],
+                3: ["10:00 AM", "1:00 PM", "4:00 PM"],
+                4: ["10:00 AM", "1:00 PM", "4:00 PM"],
+                5: ["10:00 AM", "1:00 PM", "4:00 PM"],
+                6: ["9:30 AM", "11:00 AM", "12:30 PM"],
             },
             "Dr. Rajitha L. Munasinghe": {
-                "2024-10-01": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-02": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-03": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-04": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-05": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-06": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-07": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-08": ["9:00 AM", "1:00 PM", "4:00 PM"]
+                1: ["9:30 AM", "11:30 AM", "3:00 PM"],
+                2: ["9:30 AM", "11:30 AM", "3:00 PM"],
+                3: ["9:30 AM", "11:30 AM", "3:00 PM"],
+                4: ["9:30 AM", "11:30 AM", "3:00 PM"],
+                5: ["9:30 AM", "11:30 AM", "3:00 PM"],
+                6: ["9:00 AM", "10:30 AM", "12:00 PM"],
             },
             "Dr. Sadara Liyanage": {
-                "2024-10-01": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-02": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-03": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-04": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-05": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-06": ["9:00 AM", "1:00 PM", "4:00 PM"],
-                "2024-10-07": ["10:00 AM", "11:00 AM", "2:00 PM"],
-                "2024-10-08": ["9:00 AM", "1:00 PM", "4:00 PM"]
+                1: ["11:00 AM", "2:00 PM", "5:00 PM"],
+                2: ["11:00 AM", "2:00 PM", "5:00 PM"],
+                3: ["11:00 AM", "2:00 PM", "5:00 PM"],
+                4: ["11:00 AM", "2:00 PM", "5:00 PM"],
+                5: ["11:00 AM", "2:00 PM", "5:00 PM"],
+                6: ["9:00 AM", "10:30 AM", "12:00 PM"],
             },
         };
 
+        const dateInput = document.getElementById('date');
+        const dateHint = document.getElementById('dateHint');
+        const timeSelect = document.getElementById('time');
+        const doctorSelect = document.getElementById('doctor');
+
+        const today = new Date();
+        const maxDate = new Date();
+        maxDate.setDate(today.getDate() + 30);
+        const toISODate = (d) => d.toISOString().split('T')[0];
+        dateInput.min = toISODate(today);
+        dateInput.max = toISODate(maxDate);
+
         function updateAvailableTimes() {
-            const doctor = document.getElementById('doctor').value;
-            const date = document.getElementById('date').value;
-            const timeSelect = document.getElementById('time');
+            const doctor = doctorSelect.value;
+            const dateValue = dateInput.value;
 
+            timeSelect.innerHTML = "";
+            timeSelect.disabled = true;
+            dateHint.classList.remove('error');
+            dateHint.textContent = "We're closed on Sundays. Choose a date within the next 30 days.";
 
-            timeSelect.innerHTML = "<option value=''>Select a time</option>";
+            if (!doctor || !dateValue) {
+                timeSelect.innerHTML = "<option value=''>Choose a doctor and date first</option>";
+                return;
+            }
 
+            const selectedDate = new Date(dateValue + 'T00:00:00');
+            const dayOfWeek = selectedDate.getDay();
 
-            if (doctor && date) {
+            if (dayOfWeek === 0) {
+                dateHint.textContent = "We're closed on Sundays. Please choose another day.";
+                dateHint.classList.add('error');
+                timeSelect.innerHTML = "<option value=''>Clinic closed on this date</option>";
+                return;
+            }
 
-                const availableTimes = doctorAvailability[doctor] ? doctorAvailability[doctor][date] : [];
+            const availableTimes = (weeklySchedule[doctor] && weeklySchedule[doctor][dayOfWeek]) || [];
 
-
-                if (availableTimes.length > 0) {
-                    availableTimes.forEach(time => {
-                        const option = document.createElement('option');
-                        option.value = time;
-                        option.textContent = time;
-                        timeSelect.appendChild(option);
-                    });
-                } else {
-
+            if (availableTimes.length > 0) {
+                timeSelect.innerHTML = "<option value=''>Select a time</option>";
+                availableTimes.forEach((time) => {
                     const option = document.createElement('option');
-                    option.textContent = 'No times available for selected date';
+                    option.value = time;
+                    option.textContent = time;
                     timeSelect.appendChild(option);
-                }
+                });
+                timeSelect.disabled = false;
+            } else {
+                timeSelect.innerHTML = "<option value=''>No times available for selected date</option>";
             }
         }
+
+        doctorSelect.addEventListener('change', updateAvailableTimes);
+        dateInput.addEventListener('change', updateAvailableTimes);
+
+        document.getElementById('bookingForm').addEventListener('submit', function (event) {
+            if (!timeSelect.value) {
+                event.preventDefault();
+                dateHint.textContent = 'Please select an available time slot before booking.';
+                dateHint.classList.add('error');
+                return;
+            }
+            const submitBtn = document.getElementById('bookingSubmitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking...';
+        });
     </script>
 
 </body>

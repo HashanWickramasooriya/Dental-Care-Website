@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Care Dental</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Dental Implants - All Care Dental</title>
+    <meta name="description" content="Restore missing teeth with dental implants at All Care Dental. Learn about the procedure, materials and aftercare.">
     <link rel="stylesheet" href="css/servise_item.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -26,10 +28,13 @@
             </div>
         </div>
         <nav class="navbar">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Dentist Logo">
             </a>
-            <ul>
+            <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="primary-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="service_page.html">services</a></li>
@@ -102,7 +107,7 @@
                         <li><span class="icon"></span>Sunday Closed</li>
                     </ul>
                     <div class="buttons">
-                        <a href="Customer Information Form.html" target="_blank">
+                        <a href="Customer Information Form.html">
                             <button class="button">Book Appointment</button>
                         </a>
                     </div>
@@ -199,35 +204,34 @@
                     <a href="https://web.facebook.com/allcaredentalclinc">
                         <i class='bx bxl-facebook' style='color:#ffffff'></i>
                     </a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
-                    <a href="#" class="fab fa-instagram"></a>
                 </div>
             </div>
 
             <div class="box">
                 <h3>E-mail</h3>
-                <a href="#" class="link">allcaredental@gmail.com</a>
+                <a href="mailto:allcaredental@gmail.com" class="link">allcaredental@gmail.com</a>
 
             </div>
 
             <div class="box">
                 <h3>Call Us</h3>
-                <p>+94 77 275 0814</p>
-                <p>+94 72 196 7464</p>
+                <p><a href="tel:+94772750814">+94 77 275 0814</a></p>
+                <p><a href="tel:+94721967464">+94 72 196 7464</a></p>
             </div>
 
             <div class="box">
                 <h3>Opening Hours</h3>
-                <p>Monday – Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
+                <p>Monday - Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
                 </p>
             </div>
 
         </div>
 
         <div class="credit">created by <span>All Care Dental </span> | all rights reserved!</div>
+        <div class="dev-credit">Developed by <a href="https://hashanjanithwickramasooriya.netlify.app/" target="_blank" rel="noopener noreferrer">Hashan Wickramasooriya</a></div>
 
     </section>
+    <script src="js/nav.js"></script>
 </body>
 
 </html>

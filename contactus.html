@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <title>Contact Us - All Care Dental</title>
+    <meta name="description" content="Get in touch with All Care Dental in Maharagama. Call, email or send us a message to ask a question or plan your visit.">
     <link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -26,10 +28,13 @@
             </div>
         </div>
         <nav class="navbar">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Dentist Logo">
             </a>
-            <ul>
+            <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="primary-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="service_page.html">services</a></li>
@@ -56,7 +61,7 @@
             <!-- Google Map -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63314.23983023274!2d79.9168674!3d6.852644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2518bc5d4750d%3A0xae4e388a9dd699be!2sAll%20Care%20Dental!5e0!3m2!1sen!2slk!4v1694346739681!5m2!1sen!2slk"
-                    width="600" height="350" style="border:0;" allowfullscreen=" " loading="lazy " referrerpolicy="no-referrer-when-downgrade ">
+                    width="600" height="350" style="border:0;" title="All Care Dental clinic location map" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
             </div>
 
@@ -66,7 +71,7 @@
 
                 <div class="contact-details ">
                     <p><strong>Call Us</strong></p>
-                    <p>+94 77 275 0814</p>
+                    <p><a href="tel:+94772750814">+94 77 275 0814</a></p>
                     <p><strong>Visit Us</strong></p>
                     <p>No: 120 Station Road, Maharagama, Sri Lanka</p>
                 </div>
@@ -82,16 +87,14 @@
             <div class="contact-info ">
                 <p><strong>Mail Us</strong></p>
                 <p>allcaredental@gmail.com</p>
-                <p><strong>Monday – Friday</strong> 9 am - 10 pm</p>
+                <p><strong>Monday - Friday</strong> 9 am - 10 pm</p>
                 <p><strong>Saturday</strong> 9 am - 1 pm</p>
                 <p><strong>Sunday</strong> Closed</p>
             </div>
             <hr>
             <div class="social-media ">
                 <p><strong>Find Us On</strong></p>
-                <a href="# "><i class='bx bxl-facebook bx-tada' style='color:#2e599d'  ></i></a>
-                <a href="# "><i class="fab fa-twitter "></i></a>
-                <a href="# "><i class="fab fa-instagram "></i></a>
+                <a href="https://web.facebook.com/allcaredentalclinc" target="_blank" rel="noopener noreferrer" aria-label="All Care Dental on Facebook"><i class='bx bxl-facebook bx-tada' style='color:#2e599d'></i></a>
             </div>
         </div>
 
@@ -104,25 +107,21 @@
                 </div>
                 <div class="input-row">
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Your Email.." required>
+                    <input type="email" id="email" name="email" placeholder="Your Email.." required>
                 </div>
                 <div class="input-row">
                     <label for="contact">Contact Number</label>
-                    <input type="number" id="contact" name="contact" placeholder="Your Contact Number.." required>
+                    <input type="tel" id="contact" name="contact" pattern="[0-9+\s-]{7,15}" placeholder="Your Contact Number.." required>
                 </div>
                 <div class="input-row">
-                    <label for="city">city</label>
-                    <input type="city" id="city" name="contact" placeholder="current location" required>
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="Current location" required>
                 </div>
                 <div class="input-row">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Write your message.." style="height:100px"></textarea>
+                    <textarea id="message" name="message" placeholder="Write your message.." style="height:100px" required></textarea>
                 </div>
-                <div class="captcha">
-
-                </div>
-                <input type="submit" value="Submit">
-                <br>
+                <button type="submit" id="contactSubmitBtn">Submit</button>
 
             </form>
         </div>
@@ -140,39 +139,41 @@
                     <a href="https://web.facebook.com/allcaredentalclinc ">
                         <i class='bx bxl-facebook' style='color:#ffffff'></i>
                     </a>
-                    <a href="# " class="fab fa-twitter "></a>
-                    <a href="# " class="fab fa-linkedin "></a>
-                    <a href="# " class="fab fa-instagram "></a>
                 </div>
             </div>
 
             <div class="box ">
                 <h3>E-mail</h3>
-                <a href="# " class="link ">allcaredental@gmail.com</a>
+                <a href="mailto:allcaredental@gmail.com" class="link">allcaredental@gmail.com</a>
 
             </div>
 
             <div class="box ">
                 <h3>Call Us</h3>
-                <p>+94 77 275 0814</p>
-                <p>+94 72 196 7464</p>
+                <p><a href="tel:+94772750814">+94 77 275 0814</a></p>
+                <p><a href="tel:+94721967464">+94 72 196 7464</a></p>
             </div>
 
             <div class="box ">
                 <h3>Opening Hours</h3>
-                <p>Monday – Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
+                <p>Monday - Friday 9 am - 10 pm <br> Saturday 9 am - 1 pm <br> Sunday Closed
                 </p>
             </div>
 
         </div>
 
         <div class="credit ">created by <span>All Care Dental </span> | all rights reserved!</div>
+        <div class="dev-credit">Developed by <a href="https://hashanjanithwickramasooriya.netlify.app/" target="_blank" rel="noopener noreferrer">Hashan Wickramasooriya</a></div>
 
     </section>
-    <!-- Font Awesome for Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js "></script>
-
-    <script src="scripts.js "></script>
+    <script src="js/nav.js"></script>
+    <script>
+        document.querySelector('.form-container form').addEventListener('submit', function () {
+            const btn = document.getElementById('contactSubmitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+        });
+    </script>
 
 </body>
 

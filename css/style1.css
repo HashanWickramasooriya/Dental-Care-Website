@@ -1254,7 +1254,7 @@ textarea:hover {
 
 /* Button */
 
-.gallery-item button {
+.gallery-item .gallery-tag {
     background-color: #153b79;
     border: none;
     color: #fff;
@@ -1264,13 +1264,14 @@ textarea:hover {
     padding: 12px 20px;
     margin: 20px auto;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
     display: block;
     width: 80%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.gallery-item button:hover {
+.gallery-item:hover .gallery-tag {
     background-color: #46818e;
 }
 
@@ -1414,6 +1415,88 @@ textarea:hover {
     color: #5ec5d6;
 }
 
+.footer .dev-credit {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #888;
+}
+
+.footer .dev-credit a {
+    color: #5ec5d6;
+    text-decoration: none;
+}
+
+.footer .dev-credit a:hover {
+    text-decoration: underline;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+@media (max-width: 860px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .navbar .logo {
+        order: 1;
+    }
+    .nav-toggle {
+        display: flex;
+        order: 2;
+    }
+    .navbar .btn-appointment {
+        order: 3;
+    }
+    .navbar ul {
+        order: 4;
+        flex-basis: 100%;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        width: 100%;
+        margin-top: 0;
+    }
+    .navbar ul.active {
+        max-height: 500px;
+        margin-top: 15px;
+    }
+    .navbar ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
+
 
 /* Responsive Design */
 
@@ -1461,3 +1544,12 @@ textarea:hover {
 
 
 /* footer ends */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
