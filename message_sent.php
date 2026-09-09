@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="css/base.css">
     <title>Message Received - All Care Dental</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--acd-font-body, 'Segoe UI'), Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
             color: #333;
             text-align: center;
@@ -24,6 +26,7 @@
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
         }
         .confirmation-message h1 {
+            font-family: var(--acd-font-heading, 'Poppins'), sans-serif;
             color: #06758e;
             font-size: 1.8em;
             margin: 0 0 15px;

@@ -49,11 +49,19 @@
 }
 
 .navbar .btn-appointment {
-    background-color: #333;
+    background-color: var(--acd-primary, #0d7490);
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 20px;
+    font-weight: 500;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+    display: inline-block;
+}
+
+.navbar .btn-appointment:hover {
+    background-color: var(--acd-primary-dark, #0a5a70);
+    transform: translateY(-2px);
 }
 
 .hero {
@@ -90,6 +98,9 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .text-content {
@@ -461,7 +472,7 @@
     background-color: #f3f3f3;
     padding: 60px 0;
     text-align: center;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--acd-font-body, 'Inter'), sans-serif;
 }
 
 .doctors-section h2 {
@@ -619,18 +630,22 @@
 .service-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 150px;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
     .service-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     .service-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
@@ -639,9 +654,8 @@
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
 }
 
 .service:hover {
@@ -929,8 +943,9 @@ p {
 
 .map-contact-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     gap: 20px;
     animation: slideInFromLeft 1.5s ease-in-out;
 }
@@ -946,9 +961,24 @@ p {
     }
 }
 
+.map-container {
+    width: 100%;
+    max-width: 600px;
+}
+
 .map-container iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 350px;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 480px) {
+    .map-container iframe {
+        height: 260px;
+    }
 }
 
 .map-container iframe:hover {
@@ -1071,7 +1101,7 @@ p {
 }
 
 .contact-card p {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--acd-font-body, 'Inter'), sans-serif;
     color: #7f8c8d;
 }
 
@@ -1096,7 +1126,7 @@ p {
 
 .input-row label {
     display: block;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--acd-font-body, 'Inter'), sans-serif;
     color: #34495e;
     margin-bottom: 5px;
 }
@@ -1217,7 +1247,7 @@ textarea:hover {
 
 .gallery-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -1325,7 +1355,7 @@ textarea:hover {
     background-color: #2c3e50;
     padding: 60px 20px;
     color: #fff;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--acd-font-body, 'Inter'), sans-serif;
     text-align: center;
 }
 

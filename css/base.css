@@ -1,0 +1,114 @@
+/* ==========================================================================
+   All Care Dental - shared design system
+   Loaded on every page before the page-specific stylesheet so it can define
+   consistent tokens, typography and layout primitives across the site.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    /* Brand palette: clean white / soft ivory neutrals with a refined teal-blue accent */
+    --acd-ink: #14313d;
+    --acd-body: #4a5a62;
+    --acd-muted: #7c8b92;
+    --acd-ivory: #faf8f4;
+    --acd-surface: #ffffff;
+    --acd-line: #e5e1d8;
+    --acd-primary: #0d7490;
+    --acd-primary-dark: #0a5a70;
+    --acd-primary-light: #e4f2f5;
+    --acd-accent: #c9a04a;
+
+    /* Layout */
+    --acd-container: 1200px;
+    --acd-container-padding: clamp(1.25rem, 4vw, 2.5rem);
+    --acd-radius-sm: 8px;
+    --acd-radius: 14px;
+    --acd-radius-lg: 22px;
+    --acd-shadow-sm: 0 4px 14px rgba(20, 49, 61, 0.08);
+    --acd-shadow: 0 12px 30px rgba(20, 49, 61, 0.12);
+    --acd-shadow-lg: 0 24px 48px rgba(20, 49, 61, 0.16);
+
+    /* Typography */
+    --acd-font-heading: 'Poppins', 'Segoe UI', sans-serif;
+    --acd-font-body: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Generic safety net: any element using the common ".container" convention
+   gets a sane max-width and horizontal padding unless a page stylesheet
+   already defines something more specific for it. */
+.container {
+    max-width: var(--acd-container);
+    margin-inline: auto;
+    padding-inline: var(--acd-container-padding);
+    box-sizing: border-box;
+}
+
+.acd-container {
+    width: 100%;
+    max-width: var(--acd-container);
+    margin-inline: auto;
+    padding-inline: var(--acd-container-padding);
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--acd-font-body);
+    color: var(--acd-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--acd-font-heading);
+    color: var(--acd-ink);
+    line-height: 1.25;
+}
+
+p {
+    line-height: 1.7;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+/* Consistent, visible keyboard focus across every page */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--acd-accent);
+    outline-offset: 2px;
+}
+
+/* Comfortable minimum touch targets on small screens */
+@media (max-width: 600px) {
+    a.btn, button.button, .btn-appointment, input[type="submit"], button[type="submit"] {
+        min-height: 44px;
+    }
+}
+
+/* Prevent any single element from creating page-wide horizontal scroll */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}

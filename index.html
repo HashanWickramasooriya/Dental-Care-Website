@@ -14,10 +14,11 @@
 
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/base.css">
 
 
     <link rel="stylesheet" href="css/style12.css">
-</head>
+    <link rel="stylesheet" href="css/redesign.css"></head>
 
 <body>
 
@@ -34,8 +35,10 @@
             <a href="contactus.html">Contact Us</a>
         </nav>
 
-        <a href="Customer Information Form.html" class="btn"> make appointment </a>
-        <button type="button" id="menu-btn" class="fas fa-bars" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav"></button>
+        <div class="header-actions">
+            <a href="Customer Information Form.html" class="btn"> make appointment </a>
+            <button type="button" id="menu-btn" class="fas fa-bars" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav"></button>
+        </div>
 
     </header>
 
@@ -44,9 +47,19 @@
     <!-- home -->
 
     <section class="home" id="home">
-        <video autoplay muted loop id="home-video" aria-hidden="true">
-          <source src="video/dental.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline id="home-video" poster="images/hero-bg.png" aria-hidden="true">
+          <source src="video/dental.mp4" type="video/mp4" media="(min-width: 769px)">
         </video>
+        <div class="home-overlay"></div>
+        <div class="home-content">
+            <p class="home-eyebrow">Maharagama's Family Dental Clinic</p>
+            <h1>Healthy Smiles, Cared for Properly</h1>
+            <p class="home-subtitle">From routine checkups to cosmetic dentistry, All Care Dental gives you calm, modern treatment close to home.</p>
+            <div class="home-actions">
+                <a href="Customer Information Form.html" class="home-btn-primary">Book an Appointment</a>
+                <a href="tel:+94772750814" class="home-btn-outline">Call +94 77 275 0814</a>
+            </div>
+        </div>
     </section>
 
     <!-- home end -->
@@ -54,10 +67,10 @@
     <!-- about us section-->
 
     <section class="about" id="about">
-        <h1 class="heading">about us</h1>
+        <h2 class="heading">about us</h2>
         <div class="row">
             <div class="image">
-                <img src="images/appoinments1.png" alt="Dentist attending to a patient at All Care Dental">
+                <img src="images/gallery/G4.jpg" alt="Treatment room at All Care Dental" loading="lazy">
             </div>
             <div class="content">
                 <h3>our clinic is made for you to be smiling all the time</h3>
@@ -74,7 +87,7 @@
     <!-- about end -->
     <!--appoinment shortcut --->
     <div class="container1">
-        <h1 class="title">Ready to Smile </h1>
+        <h2 class="title">Ready to Smile </h2>
 
         <div class="buttons">
             <a href="Customer Information Form.html">
@@ -220,7 +233,7 @@
 
     <section class="blog" id="blog">
 
-        <h1 class="heading">our blogs</h1>
+        <h2 class="heading">our blogs</h2>
 
         <div class="box-container">
 
@@ -281,7 +294,7 @@
     <!-- contact -->
 
     <section class="contact" id="contact">
-        <h1><span>Frequently</span> Asked Questions</h1>
+        <h2><span>Frequently</span> Asked Questions</h2>
         <div class="faq-container">
 
             <div class="faq-item">

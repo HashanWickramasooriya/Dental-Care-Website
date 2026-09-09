@@ -1,11 +1,10 @@
   body {
-      font-family: Arial, sans-serif;
+      font-family: var(--acd-font-body, 'Inter'), sans-serif;
       margin: 0;
       padding: 0;
       background-color: #ffffff;
       color: #333;
       transition: background-color 0.3s ease-in-out;
-      font-family: 'Times New Roman', Times, serif;
   }
   
   .container {
@@ -67,11 +66,19 @@
   }
   
   .navbar .btn-appointment {
-      background-color: #333;
+      background-color: var(--acd-primary, #0d7490);
       color: #fff;
       padding: 10px 20px;
       text-decoration: none;
       border-radius: 20px;
+      font-weight: 500;
+      transition: background-color 0.25s ease, transform 0.25s ease;
+      display: inline-block;
+  }
+
+  .navbar .btn-appointment:hover {
+      background-color: var(--acd-primary-dark, #0a5a70);
+      transform: translateY(-2px);
   }
   
   .hero {
@@ -98,15 +105,35 @@
       background-color: #fff;
   }
   
+  .services .container::after {
+      content: '';
+      display: table;
+      clear: both;
+  }
+
   .left {
       float: left;
       width: 60%;
       padding-right: 40px;
+      box-sizing: border-box;
   }
-  
+
   .right {
       float: right;
       width: 35%;
+      box-sizing: border-box;
+  }
+
+  @media (max-width: 860px) {
+      .left,
+      .right {
+          float: none;
+          width: 100%;
+          padding-right: 0;
+      }
+      .right {
+          margin-top: 2.5rem;
+      }
   }
   
   h2 {
@@ -118,7 +145,7 @@
   p {
       line-height: 1.6;
       margin-bottom: 15px;
-      color: red;
+      color: #4a5a62;
   }
   
   .check-list {
@@ -185,24 +212,26 @@
   }
   
   .buttons .button {
-      font-size: 1Rem;
+      font-size: 1rem;
+      font-family: var(--acd-font-heading, 'Poppins'), sans-serif;
+      font-weight: 500;
       padding: 15px 30px;
-      color: #000000;
-      background-color: #e4f1fb;
+      color: #ffffff;
+      background-color: var(--acd-primary, #0d7490);
       border: none;
       border-radius: 25px;
       cursor: pointer;
       transition: transform 0.3s, background-color 0.3s;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
-  
+
   .buttons .button:hover {
-      background-color: #d1f6f8;
+      background-color: var(--acd-primary-dark, #0a5a70);
       transform: scale(1.05);
   }
-  
+
   .buttons .button:active {
-      background-color: #b30000;
+      background-color: var(--acd-primary-dark, #0a5a70);
       transform: scale(1);
   }
   /* Animations */
@@ -452,7 +481,7 @@
       background-color: #2c3e50;
       padding: 60px 20px;
       color: #fff;
-      font-family: 'Arial', sans-serif;
+      font-family: var(--acd-font-body, 'Inter'), sans-serif;
       text-align: center;
   }
   

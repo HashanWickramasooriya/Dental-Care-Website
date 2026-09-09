@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment Confirmation</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="css/base.css">
+    <title>Appointment Confirmation - All Care Dental</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--acd-font-body, 'Segoe UI'), Tahoma, Geneva, Verdana, sans-serif;
             background-image: url(images/appoinments2.png);
             background-size: cover;
             color: #333;
@@ -28,7 +30,8 @@
             animation: bounceIn 1s ease-out;
         }
         .confirmation-message h1 {
-            color: #2d87f0;
+            font-family: var(--acd-font-heading, 'Poppins'), sans-serif;
+            color: #0d7490;
             font-size: 2.5em;
             margin: 0;
             animation: fadeIn 1s ease-out;
@@ -40,14 +43,14 @@
         .confirmation-message a {
             text-decoration: none;
             color: #ffffff;
-            background-color: #2d87f0;
+            background-color: #0d7490;
             padding: 10px 20px;
             border-radius: 5px;
             font-size: 1.2em;
             transition: background-color 0.3s ease;
         }
         .confirmation-message a:hover {
-            background-color: #1a5cb8;
+            background-color: #0a5a70;
         }
         
         /* Keyframes for animations */
@@ -84,7 +87,7 @@
 <body>
     <div class="confirmation-message">
         <h1>Appointment Request Received</h1>
-        <p>Thank you. Our front desk will call or email you shortly to confirm your appointment time. If you need to reach us sooner, call <a href="tel:+94772750814" style="background:none;color:#2d87f0;padding:0;">+94 77 275 0814</a>.</p>
+        <p>Thank you. Our front desk will call or email you shortly to confirm your appointment time. If you need to reach us sooner, call <a href="tel:+94772750814" style="background:none;color:#0d7490;padding:0;">+94 77 275 0814</a>.</p>
         <a href="index.html">Return to Home Page</a>
     </div>
 </body>
